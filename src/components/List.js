@@ -1,6 +1,6 @@
 import React from 'react'
 
-const List =({
+const List =React.memo(({
   id,
   title,
   completed,
@@ -68,7 +68,7 @@ const List =({
      
    </div>
   )
-}
+});
 
 export default List;
  
