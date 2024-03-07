@@ -1,4 +1,4 @@
-import React,{useState} from "react";//리액트 라이브러리 에서 가져옴.
+import React,{useState,useCallback} from "react";//리액트 라이브러리 에서 가져옴.
 import "./App.css";
 import Form from "./components/Form";
 import Lists from "./components/Lists";
@@ -11,9 +11,15 @@ export default function App () {
   const [todoData,setTodoData]=useState([]);//처음엔 빈배열로 상태정의
   const [value,setValue]=useState(""); // 값은 처음에 비어있음.
   
-  
 
 
+
+  const handleClick = (id) => 
+  {
+    let newTodoData = todoData.filter(data => data.id !== id)
+    setTodoData(newTodoData);
+    console.log('newTodoData', newTodoData);
+  };
 
 
 
@@ -48,7 +54,7 @@ const handleSubmit=(e)=> //제출 이벤트를 만드는 곳 .
             <h1 className>할일 목록</h1>
           </div>
          
-          <Lists todoData={todoData} setTodoData={setTodoData}/>
+          <Lists  handleClick={handleClick} todoData={todoData} setTodoData={setTodoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
 
           

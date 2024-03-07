@@ -7,7 +7,7 @@ import List from "./List";
 
 
 
-const Lists = React.memo(({todoData,setTodoData}) => {
+const Lists = React.memo(({todoData,setTodoData,handleClick}) => {
   const handleEnd=(result) =>{
     console.log('result',result); //result 매개변수에는 source 항목 및 대상 위치와 같은 드래그 이벤트발생
     // 목적지가 없으면 (이벤트 취소) 이 함수를 종료합니다.
@@ -43,6 +43,7 @@ const Lists = React.memo(({todoData,setTodoData}) => {
                 >
                   {(provided, snapshot) => (
                    <List
+                    handleClick={handleClick}
                     key={data.id}
                     id={data.id}
                     title={data.title}
